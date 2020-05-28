@@ -1,0 +1,70 @@
+@model ProductViewModel
+@{
+    var bestSellerClass=Model.Products.Count>2? "bestseller":"";
+    var products=Model.Products;
+    var categoryName=Model.Category.Name;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>List</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<style>
+    .bestseller{
+        .color:#fff;
+        background:orange;
+    }
+</style>
+<body>
+    @* @await Html.PartialAsync("_navbar") *@
+    @* @await Html.PartialAsync("_header") *@
+    <partial name="_navbar">
+    <partial name="_header">
+        
+    
+    <main>
+        <div class="row">
+            <div class="col-md-12">
+                  <h1 class="@bestSellerClass">@categoryName</h1>
+            </div>
+       
+  
+    @if(products.Count==0){
+       
+  @await Html.PartialAsync("_noproduct")
+    }
+    else{
+        
+    <div class="row ml-3">
+
+  @foreach (var product in products)
+    {
+        @if(product.isApproved)
+        {
+            <div class="col-md-3">
+                       @await Html.PartialAsync("_product",product);
+                    </div>
+        }
+                 
+        
+        
+    }
+   
+    
+
+    </div>
+  
+  
+
+    }
+ </div>
+    </main>
+
+</body>
+
+</html>

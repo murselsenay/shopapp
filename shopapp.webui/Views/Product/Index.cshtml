@@ -1,0 +1,34 @@
+@model Product
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Product</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+
+<body>
+     @* @await Html.PartialAsync("_navbar")
+     @await Html.PartialAsync("_header") *@
+    @* <h1>@ViewData["Category"]</h1>
+    <h4>@(((Product)ViewData["Product"]).Name)</h4>
+    <h4>@(((Product)ViewData["Product"]).Price)</h4>
+    <h4>@(((Product)ViewData["Product"]).Description)</h4> *@
+<partial name="_navbar">
+    <partial name="_header">
+
+
+    @* <h1>@ViewBag.Category</h1>
+    <h4>@ViewBag.Product.Name</h4>
+    <h4>@ViewBag.Product.Price</h4>
+    <h4>@ViewBag.Product.Description</h4> *@
+
+    <h1>@ViewBag.Category</h1>
+    <h4>@Model.Name</h4>
+    <h4>@Model.Price</h4>
+    <h4>@Model.Description</h4>
+</body>
+
+</html>
